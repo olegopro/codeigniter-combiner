@@ -8,6 +8,9 @@ use OAuth2\Storage\Pdo;
 
 class Oauth
 {
+	/**
+	 * @var Server $server
+	 */
 	public $server;
 
 	public function __construct()
@@ -26,7 +29,7 @@ class Oauth
 			'username' => $username,
 			'password' => $password
 		]);
-		
+
 		$this->server = new  Server($storage);
 		$this->server->addGrantType(new UserCredentials($storage));
 	}
