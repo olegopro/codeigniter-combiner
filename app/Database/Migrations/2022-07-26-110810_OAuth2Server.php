@@ -34,8 +34,7 @@ class OAuth2Server extends Migration
 				'constraint' => 4000,
 				'null'       => true
 			],
-
-			'user_id' => [
+			'user_id'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => 80,
 				'null'       => true
