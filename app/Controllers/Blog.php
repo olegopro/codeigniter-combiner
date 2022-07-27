@@ -67,4 +67,17 @@ class Blog extends ResourceController
 			return $this->respond($data);
 		}
 	}
+
+	public function delete($id = null)
+	{
+		$data = $this->model->find($id);
+
+		if ($data) {
+			$this->model->delete($id);
+
+			return $this->respondDeleted($data);
+		} else {
+			return $this->failNotFound('Элемент не существует');
+		}
+	}
 }
