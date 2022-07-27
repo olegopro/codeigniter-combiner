@@ -38,6 +38,13 @@ class Blog extends ResourceController
 		}
 	}
 
+	public function show($id = null)
+	{
+		$data = $this->model->find($id);
+
+		return $this->respond($data);
+	}
+
 	public function update($id = null)
 	{
 		$rules = [
