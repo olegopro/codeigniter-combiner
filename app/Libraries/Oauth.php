@@ -8,9 +8,7 @@ use OAuth2\Storage\Pdo;
 
 class Oauth
 {
-	/**
-	 * @var Server $server
-	 */
+	/** @var Server $server */
 	public $server;
 
 	public function __construct()
