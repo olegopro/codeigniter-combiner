@@ -37,4 +37,27 @@ class Blog extends ResourceController
 			return $this->respondCreated($data);
 		}
 	}
+
+	public function update($id = null)
+	{
+		$rules = [
+			'title'       => 'required|min_length[6]',
+			'description' => 'required'
+		];
+
+		if (!$this->validate($rules)) {
+			return $this->fail($this->validator->getErrors());
+		} else {
+			$input = $this->request->getRawInput();
+			$data = [
+				'post_id'          => $id,
+				'post_title'       => $input['title'],
+				'post_description' => $input['description']
+			];
+
+			$this->model->save($data);
+
+			return $this->respond($data);
+		}
+	}
 }
