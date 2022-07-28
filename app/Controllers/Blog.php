@@ -63,7 +63,7 @@ class Blog extends ResourceController
 	public function update($id = null)
 	{
 		helper(['array']);
-		
+
 		$rules = [
 			'title'       => 'required|min_length[6]',
 			'description' => 'required'
@@ -76,13 +76,9 @@ class Blog extends ResourceController
 			$rules = array_merge($rules, $img);
 		}
 
-
 		if (!$this->validate($rules)) {
 			return $this->fail($this->validator->getErrors());
 		} else {
-			//$input = $this->request->getRawInput();
-
-
 			$data = [
 				'post_id'          => $id,
 				'post_title'       => $this->request->getVar('title'),
