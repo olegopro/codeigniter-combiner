@@ -28,7 +28,7 @@ class Oauth
 			'password' => $password
 		]);
 
-		$this->server = new  Server($storage);
+		$this->server = new Server($storage);
 		$this->server->addGrantType(new UserCredentials($storage));
 	}
 }

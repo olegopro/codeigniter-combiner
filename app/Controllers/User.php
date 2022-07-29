@@ -14,8 +14,8 @@ class User extends BaseController
 	public function login()
 	{
 		$oauth = new Oauth;
-		$request = new Request;
-		$respond = $oauth->server->handleTokenRequest($request->createFromGlobals());
+		$request = Request::createFromGlobals();
+		$respond = $oauth->server->handleTokenRequest($request);
 
 		$code = $respond->getStatusCode();
 		$body = $respond->getResponseBody();
