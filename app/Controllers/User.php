@@ -41,7 +41,7 @@ class User extends BaseController
 		];
 
 		if (!$this->validate($rules)) {
-			return $this->fail($this->validator->getErrors());
+			return $this->fail(implode('<br>', $this->validator->getErrors()));
 		} else {
 			$model = new UserModel;
 
