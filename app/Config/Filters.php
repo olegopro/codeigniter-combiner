@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\OauthFilter;
+use App\Filters\OptionsFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,7 +25,8 @@ class Filters extends BaseConfig
 		'honeypot'      => Honeypot::class,
 		'invalidchars'  => InvalidChars::class,
 		'secureheaders' => SecureHeaders::class,
-		'oauthfilter'   => OauthFilter::class
+		'oauthfilter'   => OauthFilter::class,
+		'options'       => OptionsFilter::class
 	];
 
 	/**
@@ -35,6 +37,7 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
+			'options'
 			// 'honeypot',
 			// 'csrf',
 			// 'invalidchars',
