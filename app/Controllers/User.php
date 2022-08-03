@@ -20,7 +20,18 @@ class User extends BaseController
 		$code = $respond->getStatusCode();
 		$body = $respond->getResponseBody();
 
-		return $this->respond(json_decode($body), $code);
+		$rules = [
+			'username' => 'required',
+			'password' => 'required',
+		];
+
+		if (!$this->validate($rules)) {
+			return $this->fail($this->validator->getErrors());
+		} elseif ($code === 401) {
+			return $this->fail($body);
+		} else {
+			return $this->respond(json_decode($body), $code);
+		}
 	}
 
 	public function register()
