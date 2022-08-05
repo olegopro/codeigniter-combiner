@@ -6,6 +6,7 @@ use App\Libraries\Oauth;
 use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
 use OAuth2\Request;
+use stdClass;
 
 class User extends BaseController
 {
@@ -20,18 +21,27 @@ class User extends BaseController
 		$code = $respond->getStatusCode();
 		$body = $respond->getResponseBody();
 
+
 		$rules = [
 			'username' => 'required',
 			'password' => 'required',
 		];
 
 		if (!$this->validate($rules)) {
+			//get codeigniter errors
 			return $this->fail($this->validator->getErrors());
 		} elseif ($code === 401) {
-			return $this->fail($body);
+			//get errors from oauth2
+			foreach (json_decode($body) as $key => $value) {
+				if ($key === 'error_description') {
+					return $this->fail($value);
+				}
+			}
 		} else {
 			return $this->respond(json_decode($body), $code);
 		}
+
+		return null;
 	}
 
 	public function register()
