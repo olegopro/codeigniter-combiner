@@ -5,8 +5,7 @@ namespace App\Controllers;
 use App\Models\BlogModel;
 use CodeIgniter\RESTful\ResourceController;
 
-class Blog extends ResourceController
-{
+class Blog extends ResourceController {
 	/**
 	 * @var BlogModel
 	 */
@@ -14,15 +13,13 @@ class Blog extends ResourceController
 	protected $modelName = 'App\Models\BlogModel';
 	protected $format = 'JSON';
 
-	public function index()
-	{
+	public function index() {
 		$posts = $this->model->findAll();
 
 		return $this->respond($posts);
 	}
 
-	public function create()
-	{
+	public function create() {
 		$rules = [
 			'title'          => 'required|min_length[6]',
 			'description'    => 'required',
@@ -53,15 +50,13 @@ class Blog extends ResourceController
 		}
 	}
 
-	public function show($id = null)
-	{
+	public function show($id = null) {
 		$data = $this->model->find($id);
 
 		return $this->respond($data);
 	}
 
-	public function update($id = null)
-	{
+	public function update($id = null) {
 		helper(['array']);
 
 		$rules = [
@@ -102,8 +97,7 @@ class Blog extends ResourceController
 		}
 	}
 
-	public function delete($id = null)
-	{
+	public function delete($id = null) {
 		$data = $this->model->find($id);
 
 		if ($data) {

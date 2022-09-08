@@ -17,19 +17,39 @@ class Tasks extends Migration
 				'auto_increment' => true
 			],
 
-			'task_fio' => [
+			'task_firstname' => [
 				'type'       => 'VARCHAR',
 				'constraint' => 64
 			],
 
-			'task_telephone' => [
+			'task_lastname' => [
 				'type'       => 'VARCHAR',
 				'constraint' => 64
 			],
 
-			'task_summa' => [
+			'task_day' => [
 				'type'       => 'VARCHAR',
 				'constraint' => 16
+			],
+
+			'task_month' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 16
+			],
+
+			'task_year' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 16
+			],
+
+			'task_email' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 64
+			],
+
+			'task_password' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 64
 			],
 
 			'task_status' => [

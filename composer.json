@@ -4,11 +4,18 @@
   "description": "CodeIgniter4 starter app",
   "homepage": "https://codeigniter.com",
   "license": "MIT",
+  "minimum-stability": "dev",
   "require": {
     "php": "^7.4 || ^8.0",
     "codeigniter4/framework": "^4.0",
     "bshaffer/oauth2-server-php": "^1.10",
-    "ext-json": "*"
+    "ext-json": "*",
+    "vlucas/phpdotenv": "5.4.x-dev",
+    "guzzlehttp/guzzle": "7.5.x-dev",
+    "olegopro/phpgologin": "dev-main",
+    "ext-posix": "*",
+    "olegopro/selenium-parse": "dev-main",
+    "ext-eio": "*"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9",

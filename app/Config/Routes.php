@@ -39,6 +39,8 @@ $routes->get('/', 'Home::index');
 $routes->resource('blog');
 $routes->resource('tasks');
 
+//$routes->cli('demo/open/(:segment)', 'Demo::open/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

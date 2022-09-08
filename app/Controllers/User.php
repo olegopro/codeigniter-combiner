@@ -12,7 +12,7 @@ class User extends BaseController
 {
 	use ResponseTrait;
 
-	public function login()
+	public function login(): object|null
 	{
 		$oauth = new Oauth;
 		$request = Request::createFromGlobals();
@@ -21,17 +21,16 @@ class User extends BaseController
 		$code = $respond->getStatusCode();
 		$body = $respond->getResponseBody();
 
-
 		$rules = [
 			'username' => 'required',
 			'password' => 'required',
 		];
 
 		if (!$this->validate($rules)) {
-			//get codeigniter errors
+			// get codeigniter errors
 			return $this->fail($this->validator->getErrors());
 		} elseif ($code === 401) {
-			//get errors from oauth2
+			// get errors from oauth2
 			foreach (json_decode($body) as $key => $value) {
 				if ($key === 'error_description') {
 					return $this->fail($value);
@@ -53,12 +52,12 @@ class User extends BaseController
 		}
 
 		$rules = [
-			'username'         => 'required|min_length[5]',
-			'password'         => 'required|min_length[5]',
+			'username' => 'required|min_length[5]',
+			'password' => 'required|min_length[5]',
 			'password_confirm' => 'matches[password]',
-			'first_name'       => 'required|min_length[5]',
-			'last_name'        => 'required|min_length[5]',
-			'email'            => 'required|min_length[5]',
+			'first_name' => 'required|min_length[5]',
+			'last_name' => 'required|min_length[5]',
+			'email' => 'required|min_length[5]',
 		];
 
 		if (!$this->validate($rules)) {
@@ -67,11 +66,11 @@ class User extends BaseController
 			$model = new UserModel;
 
 			$data = [
-				'username'   => $this->request->getVar('username'),
-				'password'   => $this->request->getVar('password'),
+				'username' => $this->request->getVar('username'),
+				'password' => $this->request->getVar('password'),
 				'first_name' => $this->request->getVar('first_name'),
-				'last_name'  => $this->request->getVar('last_name'),
-				'email'      => $this->request->getVar('email')
+				'last_name' => $this->request->getVar('last_name'),
+				'email' => $this->request->getVar('email')
 			];
 
 			$user_id = $model->insert($data);
