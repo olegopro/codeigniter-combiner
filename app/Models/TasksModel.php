@@ -15,6 +15,7 @@ class TasksModel extends Model
 		'task_month',
 		'task_year',
 		'task_email',
+		'task_telephone',
 		'task_password',
 		'task_status'
 	];

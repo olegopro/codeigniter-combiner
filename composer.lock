@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4faf5dee245cd6b521178e82042d14f1",
+    "content-hash": "7ea9dcba432ab774d77fc27e7e71ca41",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -696,12 +696,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-escaper.git",
-                "reference": "d2ce45988b7ddb8b0f486d34c78816ff24dca69c"
+                "reference": "7c2c047c25dd934e74b3fa74312650bcccae68b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/d2ce45988b7ddb8b0f486d34c78816ff24dca69c",
-                "reference": "d2ce45988b7ddb8b0f486d34c78816ff24dca69c",
+                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/7c2c047c25dd934e74b3fa74312650bcccae68b2",
+                "reference": "7c2c047c25dd934e74b3fa74312650bcccae68b2",
                 "shasum": ""
             },
             "require": {
@@ -751,7 +751,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-02T00:31:13+00:00"
+            "time": "2022-09-06T00:48:23+00:00"
         },
         {
             "name": "olegopro/phpgologin",
@@ -759,12 +759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/olegopro/phpgologin.git",
-                "reference": "01df8f96db647e5c70eb1686e8ddae5873c640ea"
+                "reference": "5f506ea3494c71aadb56e6990602a17d928b9b94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/olegopro/phpgologin/zipball/01df8f96db647e5c70eb1686e8ddae5873c640ea",
-                "reference": "01df8f96db647e5c70eb1686e8ddae5873c640ea",
+                "url": "https://api.github.com/repos/olegopro/phpgologin/zipball/5f506ea3494c71aadb56e6990602a17d928b9b94",
+                "reference": "5f506ea3494c71aadb56e6990602a17d928b9b94",
                 "shasum": ""
             },
             "require": {
@@ -796,7 +796,7 @@
                 "issues": "https://github.com/olegopro/phpgologin/issues",
                 "source": "https://github.com/olegopro/phpgologin/tree/main"
             },
-            "time": "2022-09-06T13:39:08+00:00"
+            "time": "2022-09-12T23:56:34+00:00"
         },
         {
             "name": "olegopro/selenium-parse",
@@ -804,12 +804,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/olegopro/selenium-parse.git",
-                "reference": "d36abf6e07d014a72298d431c62d47e21332bc7e"
+                "reference": "5df1c02d60663a9e5390ad872a3a76b59210c502"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/olegopro/selenium-parse/zipball/d36abf6e07d014a72298d431c62d47e21332bc7e",
-                "reference": "d36abf6e07d014a72298d431c62d47e21332bc7e",
+                "url": "https://api.github.com/repos/olegopro/selenium-parse/zipball/5df1c02d60663a9e5390ad872a3a76b59210c502",
+                "reference": "5df1c02d60663a9e5390ad872a3a76b59210c502",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +833,7 @@
                 "issues": "https://github.com/olegopro/selenium-parse/issues",
                 "source": "https://github.com/olegopro/selenium-parse/tree/main"
             },
-            "time": "2022-09-07T23:22:56+00:00"
+            "time": "2022-09-10T19:34:28+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
@@ -1554,20 +1554,21 @@
         },
         {
             "name": "symfony/process",
-            "version": "6.2.x-dev",
+            "version": "5.4.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "00db88f2b2c541c5c61e05056d9d18eaa11493a9"
+                "reference": "6e75fe6874cbc7e4773d049616ab450eff537bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/00db88f2b2c541c5c61e05056d9d18eaa11493a9",
-                "reference": "00db88f2b2c541c5c61e05056d9d18eaa11493a9",
+                "url": "https://api.github.com/repos/symfony/process/zipball/6e75fe6874cbc7e4773d049616ab450eff537bf1",
+                "reference": "6e75fe6874cbc7e4773d049616ab450eff537bf1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
             },
             "type": "library",
             "autoload": {
@@ -1595,7 +1596,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/6.2"
+                "source": "https://github.com/symfony/process/tree/5.4"
             },
             "funding": [
                 {
@@ -1611,7 +1612,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-25T15:27:04+00:00"
+            "time": "2022-06-27T16:58:25+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1952,12 +1953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900"
+                "reference": "2f1fd784fe5560675722a1e5cbbcece5f43bf3a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
-                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2f1fd784fe5560675722a1e5cbbcece5f43bf3a0",
+                "reference": "2f1fd784fe5560675722a1e5cbbcece5f43bf3a0",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2001,7 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/4.x"
             },
-            "time": "2022-09-04T07:30:47+00:00"
+            "time": "2022-09-10T20:41:13+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -2127,12 +2128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c7dde1361feee0ecd796067096dc5bdde411fbef"
+                "reference": "50472880736e7496b35a17d588807600ca45a2b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c7dde1361feee0ecd796067096dc5bdde411fbef",
-                "reference": "c7dde1361feee0ecd796067096dc5bdde411fbef",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/50472880736e7496b35a17d588807600ca45a2b5",
+                "reference": "50472880736e7496b35a17d588807600ca45a2b5",
                 "shasum": ""
             },
             "require": {
@@ -2196,7 +2197,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-04T05:57:33+00:00"
+            "time": "2022-09-10T05:54:34+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2445,12 +2446,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f7cae484eea6097891dfc175db3398c7fd1f940d"
+                "reference": "ef3f40ba4709aa9c6034e4797a603b87f3022205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f7cae484eea6097891dfc175db3398c7fd1f940d",
-                "reference": "f7cae484eea6097891dfc175db3398c7fd1f940d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ef3f40ba4709aa9c6034e4797a603b87f3022205",
+                "reference": "ef3f40ba4709aa9c6034e4797a603b87f3022205",
                 "shasum": ""
             },
             "require": {
@@ -2479,7 +2480,7 @@
                 "sebastian/global-state": "^5.0.1",
                 "sebastian/object-enumerator": "^4.0.3",
                 "sebastian/resource-operations": "^3.0.3",
-                "sebastian/type": "^3.1",
+                "sebastian/type": "^3.2",
                 "sebastian/version": "^3.0.2"
             },
             "suggest": {
@@ -2533,9 +2534,13 @@
                 {
                     "url": "https://github.com/sebastianbergmann",
                     "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpunit/phpunit",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2022-09-03T16:01:27+00:00"
+            "time": "2022-09-11T08:56:38+00:00"
         },
         {
             "name": "psr/container",
@@ -3448,16 +3453,16 @@
         },
         {
             "name": "sebastian/type",
-            "version": "3.1.x-dev",
+            "version": "3.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "a0f3e755c775fdc960cd5552e046a860c82dd9f9"
+                "reference": "1d3f403f3523bc284c333208fb08c4815ac23b02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/a0f3e755c775fdc960cd5552e046a860c82dd9f9",
-                "reference": "a0f3e755c775fdc960cd5552e046a860c82dd9f9",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/1d3f403f3523bc284c333208fb08c4815ac23b02",
+                "reference": "1d3f403f3523bc284c333208fb08c4815ac23b02",
                 "shasum": ""
             },
             "require": {
@@ -3469,7 +3474,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -3492,7 +3497,7 @@
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
-                "source": "https://github.com/sebastianbergmann/type/tree/3.1"
+                "source": "https://github.com/sebastianbergmann/type/tree/3.2"
             },
             "funding": [
                 {
@@ -3500,7 +3505,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-04T06:24:39+00:00"
+            "time": "2022-09-11T09:29:03+00:00"
         },
         {
             "name": "sebastian/version",
@@ -3611,15 +3616,16 @@
     "stability-flags": {
         "vlucas/phpdotenv": 20,
         "guzzlehttp/guzzle": 20,
-        "olegopro/phpgologin": 20,
-        "olegopro/selenium-parse": 20
+        "olegopro/selenium-parse": 20,
+        "olegopro/phpgologin": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
-        "ext-posix": "*"
+        "ext-posix": "*",
+        "ext-eio": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

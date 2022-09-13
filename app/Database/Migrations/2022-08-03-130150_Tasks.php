@@ -4,7 +4,6 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-
 class Tasks extends Migration
 {
 	public function up()
@@ -45,6 +44,11 @@ class Tasks extends Migration
 			'task_email' => [
 				'type'       => 'VARCHAR',
 				'constraint' => 64
+			],
+
+			'task_telephone' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 32
 			],
 
 			'task_password' => [

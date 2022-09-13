@@ -12,10 +12,10 @@
     "ext-json": "*",
     "vlucas/phpdotenv": "5.4.x-dev",
     "guzzlehttp/guzzle": "7.5.x-dev",
-    "olegopro/phpgologin": "dev-main",
     "ext-posix": "*",
+    "ext-eio": "*",
     "olegopro/selenium-parse": "dev-main",
-    "ext-eio": "*"
+    "olegopro/phpgologin": "dev-main"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9",
