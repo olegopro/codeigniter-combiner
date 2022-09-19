@@ -16,7 +16,11 @@ class TasksModel extends Model
 		'task_year',
 		'task_email',
 		'task_telephone',
-		'task_password',
+		'task_proxy_type',
+		'task_proxy_username',
+		'task_proxy_password',
+		'task_proxy_ip',
+		'task_proxy_port',
 		'task_status'
 	];
 }

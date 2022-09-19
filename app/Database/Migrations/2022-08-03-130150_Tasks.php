@@ -51,6 +51,27 @@ class Tasks extends Migration
 				'constraint' => 32
 			],
 
+			'task_proxy_type'     => [
+				'type'       => 'VARCHAR',
+				'constraint' => 10
+			],
+			'task_proxy_username' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 32
+			],
+			'task_proxy_password' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 32
+			],
+			'task_proxy_ip'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => 32
+			],
+			'task_proxy_port'     => [
+				'type'       => 'VARCHAR',
+				'constraint' => 10
+			],
+
 			'task_password' => [
 				'type'       => 'VARCHAR',
 				'constraint' => 64
