@@ -17,6 +17,7 @@ use Faker\Generator;
 use Faker\Provider\ru_RU\Person;
 use Parallel\Parallel;
 use Parallel\Storage\ApcuStorage;
+use Throwable;
 
 class Tasks extends ResourceController
 {
@@ -148,9 +149,10 @@ class Tasks extends ResourceController
 					'task_firstname'      => $firstName,
 					'task_lastname'       => $lastName,
 					'task_day'            => rand(1, 28),
-					'task_month'          => array_rand($months),
+					'task_month'          => $months[array_rand($months)],
 					'task_year'           => rand(1960, 2005),
-					'task_email'          => $faker->word() . $faker->word() . '@mail.ru',
+					'task_email'          => $faker->word() . $faker->word(),
+					'task_password'       => 'Pa$$w0rd!1',
 					'task_proxy_type'     => $proxyList[$proxyCount]['type'] ?? '',
 					'task_proxy_username' => $proxyList[$proxyCount]['username'] ?? '',
 					'task_proxy_password' => $proxyList[$proxyCount]['password'] ?? '',
@@ -266,7 +268,7 @@ class Tasks extends ResourceController
 					'navigator' => [
 						'language'   => 'ru-RU,en-US',
 						'userAgent'  => 'random',
-						'resolution' => 'random',
+						'resolution' => '1920x1080',
 						'platform'   => 'mac'
 					],
 
@@ -329,7 +331,7 @@ class Tasks extends ResourceController
 		if (strtolower(PHP_OS) == 'linux') {
 			putenv("WEBDRIVER_CHROME_DRIVER=./chromedriver");
 		} elseif (strtolower(PHP_OS) == 'darwin') {
-			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver");
+			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver103");
 		} elseif (strtolower(PHP_OS) == 'winnt') {
 			putenv("WEBDRIVER_CHROME_DRIVER=chromedriver.exe");
 		}
@@ -371,53 +373,67 @@ class Tasks extends ResourceController
 			try {
 				$createAccount
 					->openMainPage('https://mail.ru')
-					->humanSleep(1, 3);
-				// ->goToRegisterPage()
-				// ->waitAfterLoad(5)
-				// ->fillUsername($activeTask['task_firstname'])
-				// ->humanSleep(5, 10)
-				// ->fillLastname($activeTask['task_lastname'])
-				// ->selectDayBirthday($activeTask['task_day'])
-				// ->selectMonthBirthday($activeTask['task_month'])
-				// ->selectYearBirthday($activeTask['task_year'])
-				// ->selectGender('male')
-				// ->fillEmailName($activeTask['task_email'])
-				// ->fillPassword($activeTask['task_password'])
-				// ->fillPasswordConfirm($activeTask['task_password'])
-				// ->fillTelephone()
-				// ->clickCreate()
-				// ->humanSleep(5, 10)
-				// ->setMinimumConfig();
+					->humanSleep(1, 3)
+					->goToRegisterPage()
+					->fillUsername($activeTask['task_firstname'])
+					->humanSleep(5, 10)
+					->fillLastname($activeTask['task_lastname'])
+					->selectDayBirthday($activeTask['task_day'])
+					->selectMonthBirthday($activeTask['task_month'])
+					->selectYearBirthday($activeTask['task_year'])
+					->selectGender('male')
+					->fillEmailName($activeTask['task_email'])
+					->fillPassword($activeTask['task_password'])
+					->fillPasswordConfirm($activeTask['task_password'])
+					->fillTelephone()
+					->clickCreate()
+					->humanSleep(5, 10)
+					->setMinimumConfig();
+
+				global $telephone;
+				global $mailLogin;
+				try {
+					$model->where('task_id', $activeTask['task_id'])
+						  ->set('task_telephone', $telephone)
+						  ->update();
+
+					$model->where('task_id', $activeTask['task_id'])
+						  ->set('task_email', $mailLogin)
+						  ->update();
+
+					$model->where('task_id', $activeTask['task_id'])
+						  ->set('task_status', 'done')
+						  ->update();
+
+				} catch (Throwable $exception) {
+					echo $exception->getMessage() . PHP_EOL;
+				}
 
 			} catch (Exception $e) {
-				echo 'ERROR: ' . $e->getMessage();
+				echo 'ERROR: ' . $e->getMessage() . PHP_EOL;
+				echo 'ERROR-TRACE: ' . $e->getTraceAsString() . PHP_EOL;
+				echo 'ERROR-CODE: ' . $e->getCode() . PHP_EOL;
+				echo 'ERROR-LINE: ' . $e->getLine() . PHP_EOL;
+
 				$model->where('task_id', $activeTask['task_id'])
 					  ->set('task_status', 'cancelled')
 					  ->update();
-				$this->deleteLog($profile_id);
+				// $this->deleteLog($profile_id);
 			}
 
-			try {
-				global $telephone;
-
-				$model->where('task_id', $activeTask['task_id'])
-					  ->set('task_telephone', $telephone)
-					  ->update();
-
-				$model->where('task_id', $activeTask['task_id'])
-					  ->set('task_status', 'done')
-					  ->update();
-
-			} catch (Exception $exception) {
-				echo $exception->getMessage() . PHP_EOL;
-			}
-
-			sleep(600);
-			$driver->close();
+			// sleep(rand(10, 30));
+			// $driver->close();
 			$gl->stop();
 		}
 
-		// sleep(5);
+		sleep(5);
+
+		try {
+			$gl->delete($profile_id);
+		} catch (Exception $exception) {
+			echo $exception->getMessage();
+		}
+
 		// $this->deleteLog($profile_id);
 
 		$Parallel->wait();
@@ -457,16 +473,6 @@ class Tasks extends ResourceController
 		}
 
 		return $result;
-	}
-
-	public function test()
-	{
-
-		$tt = '1663559756';
-
-		setlocale(LC_ALL, 'ru_RU.UTF-8');
-
-		dd(strftime('Число: %d, месяц: %B, день недели: %A'));
 	}
 
 }
