@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\GoLogin;
+use App\Libraries\GoLoginProfile;
 use App\Libraries\ProxyTask;
 use App\Models\TasksModel;
 use App\Projects\MailRu\Tasks\RegisterAccount;
@@ -236,36 +237,16 @@ class Tasks extends ResourceController
 		$taskData = $model->where('task_id', $activeTask['task_id'])
 						  ->first();
 
-		$proxyData = new ProxyTask;
-
-		$gl = new GoLogin([
-			'token' => $_ENV['TOKEN']
-		]);
-
-		try {
-			$profile_id = $gl->create([
-					'name'      => 'profile_mac',
-					'os'        => 'mac',
-					'navigator' => [
-						'language'   => 'ru-RU,en-US',
-						'userAgent'  => 'random',
-						'resolution' => '1920x1080',
-						'platform'   => 'mac'
-					],
-
-					...$proxyData->setProxy($taskData)
-				]
-			);
-		} catch (Exception $exception) {
-			echo $exception->getMessage();
-		}
+		$GoLogin = new GoLoginProfile;
+		$proxyData = (new ProxyTask)->setProxy($taskData);
+		$profile_id = $GoLogin->createProfile($proxyData);
 
 		$fdout = fopen($profile_id . '.log', 'wb');
 		eio_dup2($fdout, STDOUT);
 		eio_event_loop();
 
 		echo 'profile id = ' . $profile_id . PHP_EOL;
-		$profile = $gl->getProfile($profile_id);
+		$profile = $GoLogin->gl->getProfile($profile_id);
 
 		echo 'new profile name = ' . $profile->name . PHP_EOL;
 
@@ -298,29 +279,12 @@ class Tasks extends ResourceController
 			fclose($fp);
 		});
 
-		try {
-			$gl = new GoLogin([
-				'token'        => $_ENV['TOKEN'],
-				'profile_id'   => $profile_id,
-				'port'         => GoLogin::getRandomPort(),
-				'extra_params' => ['--lang=ru']
-			]);
-		} catch (Exception $exception) {
-			echo $exception->getMessage();
-		}
-
-		if (strtolower(PHP_OS) == 'linux') {
-			putenv("WEBDRIVER_CHROME_DRIVER=./chromedriver");
-		} elseif (strtolower(PHP_OS) == 'darwin') {
-			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver105");
-		} elseif (strtolower(PHP_OS) == 'winnt') {
-			putenv("WEBDRIVER_CHROME_DRIVER=chromedriver.exe");
-		}
-
+		$orbita = null;
 		$debugger_address = null;
 
 		try {
-			$debugger_address = $gl->start();
+			$orbita = $GoLogin->setOrbitaBrowser($profile_id);
+			$debugger_address = $orbita->start();
 		} catch (Exception $exception) {
 			echo $exception->getMessage() . PHP_EOL;
 
@@ -331,24 +295,7 @@ class Tasks extends ResourceController
 
 		if ($debugger_address) {
 
-			var_dump($debugger_address) . PHP_EOL;
-
-			$chromeOptions = new ChromeOptions();
-			$chromeOptions->setExperimentalOption('debuggerAddress', $debugger_address);
-
-			$capabilities = DesiredCapabilities::chrome();
-			$capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
-
-			$driver = ChromeDriver::start($capabilities);
-			$driver->manage()->window()->maximize();
-
-			$getWindowSize = $driver->manage()->window()->getSize();
-			$height = $getWindowSize->getHeight();
-			$width = $getWindowSize->getWidth();
-
-			$driver->manage()->window()->setSize(new WebDriverDimension($width, $height - rand(40, 120)));
-
-			sleep(1);
+			$driver = $GoLogin->runOrbitaBrowser($debugger_address);
 			$createAccount = new RegisterAccount($driver);
 
 			try {
@@ -374,22 +321,17 @@ class Tasks extends ResourceController
 				global $telephone;
 				global $mailLogin;
 
-				try {
-					$model->where('task_id', $activeTask['task_id'])
-						  ->set('task_telephone', $telephone)
-						  ->update();
+				$model->where('task_id', $activeTask['task_id'])
+					  ->set('task_telephone', $telephone)
+					  ->update();
 
-					$model->where('task_id', $activeTask['task_id'])
-						  ->set('task_email', $mailLogin)
-						  ->update();
+				$model->where('task_id', $activeTask['task_id'])
+					  ->set('task_email', $mailLogin)
+					  ->update();
 
-					$model->where('task_id', $activeTask['task_id'])
-						  ->set('task_status', 'done')
-						  ->update();
-
-				} catch (Exception $exception) {
-					echo $exception->getMessage() . PHP_EOL;
-				}
+				$model->where('task_id', $activeTask['task_id'])
+					  ->set('task_status', 'done')
+					  ->update();
 
 			} catch (Throwable|Exception $e) {
 				echo 'ERROR-CODE: ' . $e->getCode() . PHP_EOL;
@@ -401,27 +343,22 @@ class Tasks extends ResourceController
 				$model->where('task_id', $activeTask['task_id'])
 					  ->set('task_status', 'cancelled')
 					  ->update();
+
 				$this->deleteLog($profile_id);
 			}
 
 			sleep(100);
-			// sleep(rand(10, 30));
+
 			$driver->close();
-			$gl->stop();
+			$orbita->stop();
 		}
 
 		sleep(5);
 
-		try {
-			$gl->delete($profile_id);
-		} catch (Exception $exception) {
-			echo $exception->getMessage();
-		}
-
+		$GoLogin->gl->delete($profile_id);
 		$this->deleteLog($profile_id);
 
 		$Parallel->wait();
-
 		fclose($fdout);
 	}
 
