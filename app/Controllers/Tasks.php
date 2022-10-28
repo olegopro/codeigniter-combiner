@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\GoLogin;
+use App\Libraries\ProxyTask;
 use App\Models\TasksModel;
 use App\Projects\MailRu\Tasks\RegisterAccount;
 use CodeIgniter\RESTful\ResourceController;
@@ -235,27 +236,7 @@ class Tasks extends ResourceController
 		$taskData = $model->where('task_id', $activeTask['task_id'])
 						  ->first();
 
-		$proxyData = [];
-		if ($taskData['task_proxy_ip'] !== '') {
-			$proxyData = [
-				'proxyEnabled' => true,
-				'proxy'        => [
-					'mode' => $taskData['task_proxy_type'] == '' ? $taskData['task_proxy_type'] = 'http' : $taskData['task_proxy_type'],
-					'host' => $taskData['task_proxy_ip'],
-					'port' => $taskData['task_proxy_port'],
-				]
-			];
-
-			if ($taskData['task_proxy_username'] && $taskData['task_proxy_password']) {
-				$proxyData['proxy']['username'] = $taskData['task_proxy_username'];
-				$proxyData['proxy']['password'] = $taskData['task_proxy_password'];
-			} else {
-				$proxyData['proxy']['username'] = '';
-				$proxyData['proxy']['password'] = '';
-			}
-		} else {
-			$proxyData['proxy']['mode'] = 'none';
-		}
+		$proxyData = new ProxyTask;
 
 		$gl = new GoLogin([
 			'token' => $_ENV['TOKEN']
@@ -272,7 +253,7 @@ class Tasks extends ResourceController
 						'platform'   => 'mac'
 					],
 
-					...$proxyData
+					...$proxyData->setProxy($taskData)
 				]
 			);
 		} catch (Exception $exception) {

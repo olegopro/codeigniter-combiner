@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\GoLogin;
+use App\Libraries\ProxyTask;
 use CodeIgniter\Config\BaseService;
 
 /**
@@ -30,4 +31,5 @@ class Services extends BaseService
 	 *     return new \CodeIgniter\Example();
 	 * }
 	 */
+
 }
