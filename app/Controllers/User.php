@@ -52,12 +52,12 @@ class User extends BaseController
 		}
 
 		$rules = [
-			'username' => 'required|min_length[5]',
-			'password' => 'required|min_length[5]',
+			'username'         => 'required|min_length[5]',
+			'password'         => 'required|min_length[5]',
 			'password_confirm' => 'matches[password]',
-			'first_name' => 'required|min_length[5]',
-			'last_name' => 'required|min_length[5]',
-			'email' => 'required|min_length[5]',
+			'first_name'       => 'required|min_length[5]',
+			'last_name'        => 'required|min_length[5]',
+			'email'            => 'required|min_length[5]',
 		];
 
 		if (!$this->validate($rules)) {
@@ -66,11 +66,11 @@ class User extends BaseController
 			$model = new UserModel;
 
 			$data = [
-				'username' => $this->request->getVar('username'),
-				'password' => $this->request->getVar('password'),
+				'username'   => $this->request->getVar('username'),
+				'password'   => $this->request->getVar('password'),
 				'first_name' => $this->request->getVar('first_name'),
-				'last_name' => $this->request->getVar('last_name'),
-				'email' => $this->request->getVar('email')
+				'last_name'  => $this->request->getVar('last_name'),
+				'email'      => $this->request->getVar('email')
 			];
 
 			$user_id = $model->insert($data);

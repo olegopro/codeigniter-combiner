@@ -173,14 +173,12 @@ class Tasks extends ResourceController
 
 			}
 
-			// return $this->respondCreated($data);
+			return $this->respondCreated($data);
 
 		}
 	}
 
-	public function edit($id = null)
-	{
-	}
+	public function edit($id = null) {}
 
 	public function open($profile_id = null)
 	{
@@ -255,6 +253,8 @@ class Tasks extends ResourceController
 				$proxyData['proxy']['username'] = '';
 				$proxyData['proxy']['password'] = '';
 			}
+		} else {
+			$proxyData['proxy']['mode'] = 'none';
 		}
 
 		$gl = new GoLogin([
@@ -331,7 +331,7 @@ class Tasks extends ResourceController
 		if (strtolower(PHP_OS) == 'linux') {
 			putenv("WEBDRIVER_CHROME_DRIVER=./chromedriver");
 		} elseif (strtolower(PHP_OS) == 'darwin') {
-			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver103");
+			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver105");
 		} elseif (strtolower(PHP_OS) == 'winnt') {
 			putenv("WEBDRIVER_CHROME_DRIVER=chromedriver.exe");
 		}
@@ -376,7 +376,7 @@ class Tasks extends ResourceController
 					->humanSleep(1, 3)
 					->goToRegisterPage()
 					->fillUsername($activeTask['task_firstname'])
-					->humanSleep(5, 10)
+					->humanSleep(1, 3)
 					->fillLastname($activeTask['task_lastname'])
 					->selectDayBirthday($activeTask['task_day'])
 					->selectMonthBirthday($activeTask['task_month'])
@@ -387,11 +387,12 @@ class Tasks extends ResourceController
 					->fillPasswordConfirm($activeTask['task_password'])
 					->fillTelephone()
 					->clickCreate()
-					->humanSleep(5, 10)
+					->humanSleep(1, 10)
 					->setMinimumConfig();
 
 				global $telephone;
 				global $mailLogin;
+
 				try {
 					$model->where('task_id', $activeTask['task_id'])
 						  ->set('task_telephone', $telephone)
@@ -405,24 +406,26 @@ class Tasks extends ResourceController
 						  ->set('task_status', 'done')
 						  ->update();
 
-				} catch (Throwable $exception) {
+				} catch (Exception $exception) {
 					echo $exception->getMessage() . PHP_EOL;
 				}
 
-			} catch (Exception $e) {
-				echo 'ERROR: ' . $e->getMessage() . PHP_EOL;
-				echo 'ERROR-TRACE: ' . $e->getTraceAsString() . PHP_EOL;
+			} catch (Throwable|Exception $e) {
 				echo 'ERROR-CODE: ' . $e->getCode() . PHP_EOL;
+				echo 'ERROR-FILE: ' . $e->getFile() . PHP_EOL;
 				echo 'ERROR-LINE: ' . $e->getLine() . PHP_EOL;
+				echo 'ERROR: ' . $e->getMessage() . PHP_EOL;
+				// echo 'ERROR-TRACE: ' . $e->getTraceAsString() . PHP_EOL;
 
 				$model->where('task_id', $activeTask['task_id'])
 					  ->set('task_status', 'cancelled')
 					  ->update();
-				// $this->deleteLog($profile_id);
+				$this->deleteLog($profile_id);
 			}
 
+			sleep(100);
 			// sleep(rand(10, 30));
-			// $driver->close();
+			$driver->close();
 			$gl->stop();
 		}
 
@@ -434,7 +437,7 @@ class Tasks extends ResourceController
 			echo $exception->getMessage();
 		}
 
-		// $this->deleteLog($profile_id);
+		$this->deleteLog($profile_id);
 
 		$Parallel->wait();
 
