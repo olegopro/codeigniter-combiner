@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\GoLogin;
 use App\Libraries\GoLoginProfile;
 use App\Libraries\ProxyTask;
-use App\Models\TasksModel;
+use App\Models\MailRegisterModel;
 use App\Projects\MailRu\Tasks\RegisterAccount;
 use CodeIgniter\RESTful\ResourceController;
 use Config\Database;
@@ -21,14 +21,14 @@ use Parallel\Parallel;
 use Parallel\Storage\ApcuStorage;
 use Throwable;
 
-class Tasks extends ResourceController
+class MailRegister extends ResourceController
 {
 
 	/**
-	 * @var TasksModel
+	 * @var MailRegisterModel
 	 */
-	protected $model = 'App\Models\TasksModel';
-	protected $modelName = 'App\Models\TasksModel';
+	protected $model = 'App\Models\MailRegisterModel';
+	protected $modelName = 'App\Models\MailRegisterModel';
 	protected $format = 'JSON';
 
 	public function index()
@@ -229,7 +229,7 @@ class Tasks extends ResourceController
 			exit('no tasks to execute' . PHP_EOL);
 		}
 
-		$model = new TasksModel();
+		$model = new MailRegisterModel();
 		$model->where('task_id', $activeTask['task_id'])
 			  ->set('task_status', 'pending')
 			  ->update();
@@ -364,7 +364,7 @@ class Tasks extends ResourceController
 
 	private function getActiveTask()
 	{
-		$model = new TasksModel();
+		$model = new MailRegisterModel();
 
 		return $active_task = $model->where('task_status', 'active')->first();
 	}

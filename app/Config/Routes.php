@@ -37,7 +37,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->resource('blog');
-$routes->resource('tasks');
+$routes->resource('mailregister');
 
 //$routes->cli('demo/open/(:segment)', 'Demo::open/$1');
 

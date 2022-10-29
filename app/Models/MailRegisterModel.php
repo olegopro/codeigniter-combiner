@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TasksModel extends Model
+class MailRegisterModel extends Model
 {
 	protected $table = 'tasks';
 	protected $primaryKey = 'task_id';
