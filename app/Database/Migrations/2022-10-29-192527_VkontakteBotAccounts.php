@@ -27,6 +27,31 @@ class VkontakteBotAccounts extends Migration
 				'constraint' => 30
 			],
 
+			'proxy_type' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 120
+			],
+
+			'proxy_ip' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 120
+			],
+
+			'proxy_port' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 120
+			],
+
+			'proxy_username' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 120
+			],
+
+			'proxy_password' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 120
+			],
+
 			'created_at' => [
 				'type'    => 'DATETIME',
 				'default' => new RawSql('CURRENT_TIMESTAMP'),

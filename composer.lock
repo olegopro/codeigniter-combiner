@@ -161,16 +161,16 @@
         },
         {
             "name": "codeigniter4/framework",
-            "version": "v4.2.7",
+            "version": "v4.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "011ce3bbda6f85930075a9b8fecbee01c4b23ab9"
+                "reference": "34373dfc580b4a95375f911853060b5a0eea169a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/011ce3bbda6f85930075a9b8fecbee01c4b23ab9",
-                "reference": "011ce3bbda6f85930075a9b8fecbee01c4b23ab9",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/34373dfc580b4a95375f911853060b5a0eea169a",
+                "reference": "34373dfc580b4a95375f911853060b5a0eea169a",
                 "shasum": ""
             },
             "require": {
@@ -186,15 +186,19 @@
             "require-dev": {
                 "codeigniter/coding-standard": "^1.5",
                 "fakerphp/faker": "^1.9",
-                "friendsofphp/php-cs-fixer": "~3.11.0",
+                "friendsofphp/php-cs-fixer": "~3.12.0",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/cs-config": "^3.6",
                 "phpunit/phpunit": "^9.1",
                 "predis/predis": "^1.1 || ^2.0"
             },
             "suggest": {
+                "ext-dom": "If you use TestResponse",
+                "ext-exif": "If you run Image class tests",
                 "ext-fileinfo": "Improves mime type detection for files",
+                "ext-gd": "If you use Image class GDHandler",
                 "ext-imagick": "If you use Image class ImageMagickHandler",
+                "ext-libxml": "If you use TestResponse",
                 "ext-memcache": "If you use Cache class MemcachedHandler with Memcache",
                 "ext-memcached": "If you use Cache class MemcachedHandler with Memcached",
                 "ext-mysqli": "If you use MySQL",
@@ -226,7 +230,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2022-10-06T13:46:23+00:00"
+            "time": "2022-10-31T00:46:08+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -511,12 +515,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "69568e4293f4fa993f3b0e51c9723e1e17c41379"
+                "reference": "67c26b443f348a51926030c83481b85718457d3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/69568e4293f4fa993f3b0e51c9723e1e17c41379",
-                "reference": "69568e4293f4fa993f3b0e51c9723e1e17c41379",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/67c26b443f348a51926030c83481b85718457d3d",
+                "reference": "67c26b443f348a51926030c83481b85718457d3d",
                 "shasum": ""
             },
             "require": {
@@ -607,7 +611,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.4.1"
+                "source": "https://github.com/guzzle/psr7/tree/2.4.3"
             },
             "funding": [
                 {
@@ -623,7 +627,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-28T14:45:39+00:00"
+            "time": "2022-10-26T14:07:24+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -696,12 +700,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-escaper.git",
-                "reference": "f7d77ff0c7a2c9a1434ee07154f6dd157ee5843c"
+                "reference": "b64b27cc83c62ab746431251eaeee85fe952ca57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/f7d77ff0c7a2c9a1434ee07154f6dd157ee5843c",
-                "reference": "f7d77ff0c7a2c9a1434ee07154f6dd157ee5843c",
+                "url": "https://api.github.com/repos/laminas/laminas-escaper/zipball/b64b27cc83c62ab746431251eaeee85fe952ca57",
+                "reference": "b64b27cc83c62ab746431251eaeee85fe952ca57",
                 "shasum": ""
             },
             "require": {
@@ -717,7 +721,7 @@
                 "laminas/laminas-coding-standard": "~2.4.0",
                 "maglnet/composer-require-checker": "^3.8.0",
                 "phpunit/phpunit": "^9.5.18",
-                "psalm/plugin-phpunit": "^0.17.0",
+                "psalm/plugin-phpunit": "^0.18.0",
                 "vimeo/psalm": "^4.22.0"
             },
             "default-branch": true,
@@ -751,7 +755,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-16T01:31:34+00:00"
+            "time": "2022-11-01T19:39:35+00:00"
         },
         {
             "name": "olegopro/phpgologin",
@@ -804,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/olegopro/selenium-parse.git",
-                "reference": "65d49a23ff95aa480652259b5d33212590602e64"
+                "reference": "f51719dec88d124c5ce63f58d1d1f69c0f63c0bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/olegopro/selenium-parse/zipball/65d49a23ff95aa480652259b5d33212590602e64",
-                "reference": "65d49a23ff95aa480652259b5d33212590602e64",
+                "url": "https://api.github.com/repos/olegopro/selenium-parse/zipball/f51719dec88d124c5ce63f58d1d1f69c0f63c0bf",
+                "reference": "f51719dec88d124c5ce63f58d1d1f69c0f63c0bf",
                 "shasum": ""
             },
             "require": {
@@ -833,7 +837,7 @@
                 "issues": "https://github.com/olegopro/selenium-parse/issues",
                 "source": "https://github.com/olegopro/selenium-parse/tree/main"
             },
-            "time": "2022-09-20T23:21:24+00:00"
+            "time": "2022-11-02T21:18:12+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
@@ -1558,12 +1562,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "00db88f2b2c541c5c61e05056d9d18eaa11493a9"
+                "reference": "ba6e55359f8f755fe996c58a81e00eaa67a35877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/00db88f2b2c541c5c61e05056d9d18eaa11493a9",
-                "reference": "00db88f2b2c541c5c61e05056d9d18eaa11493a9",
+                "url": "https://api.github.com/repos/symfony/process/zipball/ba6e55359f8f755fe996c58a81e00eaa67a35877",
+                "reference": "ba6e55359f8f755fe996c58a81e00eaa67a35877",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1615,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-25T15:27:04+00:00"
+            "time": "2022-11-02T09:08:04+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -1771,12 +1775,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "bc743e9bfa6e42375cbf79c42bbe49f5fef12c2a"
+                "reference": "dc3c3fad52250c572515419d8aa078acf57cac59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/bc743e9bfa6e42375cbf79c42bbe49f5fef12c2a",
-                "reference": "bc743e9bfa6e42375cbf79c42bbe49f5fef12c2a",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/dc3c3fad52250c572515419d8aa078acf57cac59",
+                "reference": "dc3c3fad52250c572515419d8aa078acf57cac59",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1835,7 @@
                 "issues": "https://github.com/FakerPHP/Faker/issues",
                 "source": "https://github.com/FakerPHP/Faker/tree/main"
             },
-            "time": "2022-10-11T07:14:25+00:00"
+            "time": "2022-11-01T22:24:20+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -1967,6 +1971,7 @@
                 "ircmaxell/php-yacc": "^0.0.7",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
+            "default-branch": true,
             "bin": [
                 "bin/php-parse"
             ],
@@ -2126,12 +2131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "8be4d431796da1afc21bd9d11b73105f17b3522b"
+                "reference": "a358c9d818d521da01361c5ada06ff8031288aaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/8be4d431796da1afc21bd9d11b73105f17b3522b",
-                "reference": "8be4d431796da1afc21bd9d11b73105f17b3522b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a358c9d818d521da01361c5ada06ff8031288aaa",
+                "reference": "a358c9d818d521da01361c5ada06ff8031288aaa",
                 "shasum": ""
             },
             "require": {
@@ -2195,7 +2200,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-17T06:29:29+00:00"
+            "time": "2022-11-01T06:33:37+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2444,12 +2449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7847a4a920f686db261da1ccc92120800822661f"
+                "reference": "a3a5b7fcd10576fb67a9c13ca7d31990bd5a1919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7847a4a920f686db261da1ccc92120800822661f",
-                "reference": "7847a4a920f686db261da1ccc92120800822661f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a3a5b7fcd10576fb67a9c13ca7d31990bd5a1919",
+                "reference": "a3a5b7fcd10576fb67a9c13ca7d31990bd5a1919",
                 "shasum": ""
             },
             "require": {
@@ -2538,7 +2543,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-19T10:44:50+00:00"
+            "time": "2022-11-01T06:34:20+00:00"
         },
         {
             "name": "psr/container",

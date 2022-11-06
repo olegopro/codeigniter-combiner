@@ -40,6 +40,11 @@ class VkontakteBotTasks extends Migration
 				'unsigned'   => true,
 			],
 
+			'task_status' => [
+				'type'       => 'VARCHAR',
+				'constraint' => 64
+			],
+
 			'created_at' => [
 				'type'    => 'DATETIME',
 				'default' => new RawSql('CURRENT_TIMESTAMP'),

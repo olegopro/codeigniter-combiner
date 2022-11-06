@@ -28,9 +28,10 @@ class GoLoginProfile
 		$this->gl = new GoLogin([
 			'token' => $_ENV['TOKEN']
 		]);
+
 	}
 
-	public function createProfile($proxyData)
+	public function createProfile($proxyData = [])
 	{
 		try {
 			return

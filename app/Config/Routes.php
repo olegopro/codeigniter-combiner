@@ -38,6 +38,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->resource('blog');
 $routes->resource('mailregister');
+$routes->resource('vkontaktebot');
 
 //$routes->cli('demo/open/(:segment)', 'Demo::open/$1');
 
