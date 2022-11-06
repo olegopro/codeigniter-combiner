@@ -41,7 +41,12 @@ class VkontakteBot extends ResourceController
 	{
 		$account_name = $this->request->getVar('login');
 		$account_password = $this->request->getVar('password');
-		$account_proxy = $this->request->getVar('password');
+		// $account_proxy = $this->request->getVar('password');
+
+		$insertID = $this->model->newAccount($account_name, $account_password);
+		$account_data = $this->model->accountById($insertID);
+
+		return $this->respondCreated($account_data);
 
 	}
 

@@ -7,16 +7,27 @@ use Config\Database;
 
 class VkontakteBotModel extends Model
 {
-	public function newTask($account_id, $count, $action_type, $status): int
-	{
-		$vk_bot_tasks = $this->db->table('vk_bot_tasks');
 
-		$vk_bot_tasks->insert([
+	public function newTask($account_id, $count, $action_type, $status)
+	{
+		$this->db->table('vk_bot_tasks')->insert([
 			'account_id'  => $account_id,
 			'task_type'   => $action_type,
 			'task_count'  => $count,
 			'task_status' => $status
 		]);
+
+		return $this->db->insertID();
+	}
+
+	public function newAccount($account_name, $account_password)
+	{
+		$this->db
+			->table('vk_bot_accounts')
+			->insert([
+				'account_name'     => $account_name,
+				'account_password' => $account_password
+			]);
 
 		return $this->db->insertID();
 	}
@@ -63,6 +74,14 @@ class VkontakteBotModel extends Model
 			->where('task_id', $taskID)
 			->set('task_status', $status)
 			->update();
+	}
+
+	public function accountById($id)
+	{
+		return $this->db
+			->table('vk_bot_accounts')
+			->getWhere(['id' => $id], 1)
+			->getFirstRow('array');
 	}
 
 	public function accountNameById($account_id) {}
