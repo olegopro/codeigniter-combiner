@@ -10,7 +10,7 @@
     "codeigniter4/framework": "^4.0",
     "bshaffer/oauth2-server-php": "^1.10",
     "ext-json": "*",
-    "vlucas/phpdotenv": "5.4.x-dev",
+    "vlucas/phpdotenv": "^5.4.x-dev",
     "guzzlehttp/guzzle": "7.5.x-dev",
     "ext-posix": "*",
     "ext-eio": "*",
