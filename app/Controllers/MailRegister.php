@@ -43,7 +43,7 @@ class MailRegister extends ResourceController
 		return $this->respond($tasks);
 	}
 
-	public function showById($id = null)
+	public function showById($id)
 	{
 		$task = $this->model->find($id);
 
@@ -379,7 +379,7 @@ class MailRegister extends ResourceController
 		}
 	}
 
-	public function proxyFormatter(string $string): array
+	public function proxyFormatter(string $string = null): array
 	{
 		$matches = [];
 		preg_match_all('~(?P<type>socks[4|5]?|http|https)?:?/?/?(?P<username>\w{1,15})*?:?(?P<password>\w{1,15})*?@?(?P<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})[: ](?P<port>\K\d*)~', $string, $matches, PREG_SET_ORDER);
@@ -395,5 +395,10 @@ class MailRegister extends ResourceController
 
 		return $result;
 	}
+
+    public function test()
+    {
+        echo '123';
+    }
 
 }

@@ -38,9 +38,15 @@ $routes->set404Override();
 // $routes->get('/', 'Home::index');
 
 $routes->resource('blog');
-$routes->resource('MailRegister');
+// $routes->resource('MailRegister');
 
+$routes->post('/mail-register/create-multi-task', 'MailRegister::createMulti');
+$routes->get('/mail-register/all-tasks', 'MailRegister::show');
+$routes->get('/mail-register/show-by-id/(:num)', 'MailRegister::showById/$1');
+$routes->post('/mail-register/update-task/(:num)', 'MailRegister::update/$1');
+$routes->post('/mail-register/delete-task/(:num)', 'MailRegister::delete/$1');
 
+$routes->cli('run-task', 'MailRegister::runTask');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

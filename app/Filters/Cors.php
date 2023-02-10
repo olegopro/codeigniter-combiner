@@ -19,7 +19,7 @@ class Cors implements FilterInterface
      * redirects, etc.
      *
      * @param RequestInterface $request
-     * @param array|null       $arguments
+     * @param array|null $arguments
      *
      * @return mixed
      */
@@ -28,8 +28,8 @@ class Cors implements FilterInterface
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, PUT, DELETE");
-        $method = $_SERVER['REQUEST_METHOD'];
-        if($method == "OPTIONS"){
+        $method = $_SERVER['REQUEST_METHOD'] ?? null;
+        if ($method == "OPTIONS") {
             die();
         }
     }
@@ -40,9 +40,9 @@ class Cors implements FilterInterface
      * to stop execution of other after filters, short of
      * throwing an Exception or Error.
      *
-     * @param RequestInterface  $request
+     * @param RequestInterface $request
      * @param ResponseInterface $response
-     * @param array|null        $arguments
+     * @param array|null $arguments
      *
      * @return mixed
      */
