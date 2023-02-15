@@ -158,6 +158,13 @@ class WebWalker extends ResourceController
         fclose($fdout);
     }
 
+    public function showById($id)
+    {
+        $task = $this->model->find($id);
+
+        return $this->respond($task);
+    }
+
     private function getActiveTask()
     {
         $model = new WebWalkerModel();

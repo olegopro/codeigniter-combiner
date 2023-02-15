@@ -51,6 +51,7 @@ $routes->cli('run-task', 'MailRegister::runTask');
 
 $routes->post('/web-walker/tasks', 'WebWalker::allTasks');
 $routes->post('/web-walker/create-task', 'WebWalker::createTask');
+$routes->get('/web-walker/show-by-id/(:num)', 'WebWalker::showById/$1');
 
 $routes->cli('/web-walker/run-task', 'WebWalker::runTask');
 /*
