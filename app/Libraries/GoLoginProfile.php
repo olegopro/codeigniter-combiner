@@ -20,7 +20,7 @@ class GoLoginProfile
 		if (strtolower(PHP_OS) == 'linux') {
 			putenv("WEBDRIVER_CHROME_DRIVER=./chromedriver");
 		} elseif (strtolower(PHP_OS) == 'darwin') {
-			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver105");
+			putenv("WEBDRIVER_CHROME_DRIVER=/Users/evilgazz/Downloads/chromedriver109");
 		} elseif (strtolower(PHP_OS) == 'winnt') {
 			putenv("WEBDRIVER_CHROME_DRIVER=chromedriver.exe");
 		}
@@ -41,11 +41,25 @@ class GoLoginProfile
 						'navigator' => [
 							'language'   => 'ru-RU,en-US',
 							'userAgent'  => 'random',
-							'resolution' => '1920x1080',
+							'resolution' => 'random',
 							'platform'   => 'mac'
 						],
 
-						...$proxyData
+                        'proxyEnabled' => true,
+                        'proxy'        => [
+                            'mode' => 'none',
+                            // 'autoProxyRegion' => 'us'
+                            // 'host'            => '',
+                            // 'port'            => '',
+                            // 'username'        => '',
+                            // 'password'        => '',
+                        ],
+                        'webRTC'       => [
+                            'mode'    => 'alerted',
+                            'enabled' => true
+                        ],
+
+                        ...$proxyData
 					]
 				);
 		} catch (Exception $exception) {

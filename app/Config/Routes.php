@@ -47,6 +47,12 @@ $routes->post('/mail-register/update-task/(:num)', 'MailRegister::update/$1');
 $routes->post('/mail-register/delete-task/(:num)', 'MailRegister::delete/$1');
 
 $routes->cli('run-task', 'MailRegister::runTask');
+
+
+$routes->post('/web-walker/tasks', 'WebWalker::allTasks');
+$routes->post('/web-walker/create-task', 'WebWalker::createTask');
+
+$routes->cli('/web-walker/run-task', 'WebWalker::runTask');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

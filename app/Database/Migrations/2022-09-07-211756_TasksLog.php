@@ -42,6 +42,6 @@ class TasksLog extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('task_log');
+		$this->forge->dropTable('tasks_logs');
 	}
 }
