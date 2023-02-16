@@ -165,6 +165,19 @@ class WebWalker extends ResourceController
         return $this->respond($task);
     }
 
+    public function update($id = null)
+    {
+        $data = [
+            'id'     => $id,
+            'status' => $this->request->getVar('status'),
+
+        ];
+
+        $this->model->save($data);
+
+        return $this->respond($data);
+    }
+
     private function getActiveTask()
     {
         $model = new WebWalkerModel();

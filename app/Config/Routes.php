@@ -37,9 +37,6 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
-$routes->resource('blog');
-// $routes->resource('MailRegister');
-
 $routes->post('/mail-register/create-multi-task', 'MailRegister::createMulti');
 $routes->get('/mail-register/all-tasks', 'MailRegister::show');
 $routes->get('/mail-register/show-by-id/(:num)', 'MailRegister::showById/$1');
@@ -52,6 +49,7 @@ $routes->cli('run-task', 'MailRegister::runTask');
 $routes->post('/web-walker/tasks', 'WebWalker::allTasks');
 $routes->post('/web-walker/create-task', 'WebWalker::createTask');
 $routes->get('/web-walker/show-by-id/(:num)', 'WebWalker::showById/$1');
+$routes->post('/web-walker/update-task/(:num)', 'WebWalker::update/$1');
 
 $routes->cli('/web-walker/run-task', 'WebWalker::runTask');
 /*
