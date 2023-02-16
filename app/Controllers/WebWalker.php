@@ -178,6 +178,19 @@ class WebWalker extends ResourceController
         return $this->respond($data);
     }
 
+    public function deleteTask($id = null)
+    {
+        $task = $this->model->find($id);
+
+        if ($task) {
+            $this->model->delete($id);
+
+            return $this->respondDeleted($task);
+        } else {
+            return $this->failNotFound('Элемент не существует');
+        }
+    }
+
     private function getActiveTask()
     {
         $model = new WebWalkerModel();
